@@ -19,6 +19,6 @@ Install:
 
 -----------------------------------------
 
-Support:
+Demo & Support:
 
-Visit www.parkho.ir and use contact me form for support.
+Visit www.parkho.ir and use contact me form for support and pilots-modules for demo.
