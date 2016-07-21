@@ -67,6 +67,7 @@
 						<li>BKN = "Broken" = 5 to 7 oktas</li>
 						<li>OVC = "Overcast" = 8 oktas, i.e., full cloud coverage</li>
 						<li>VV = Clouds cannot be seen because of fog or heavy precipitation, so vertical visibility is given instead.</li>
+						<li>CAVOK = Ceiling And Visibility OKay.</li>
 					</ul>
 					</td>
 				</tr>
