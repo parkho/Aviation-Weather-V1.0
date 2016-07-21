@@ -21,6 +21,11 @@ class WTHR extends CodonModule
 				$visibility = $xmlmet->data->METAR->visibility_statute_mi;
 				$winddir = $xmlmet->data->METAR->wind_dir_degrees;
 				$windspd = $xmlmet->data->METAR->wind_speed_kt;
+				$skycondition0 = $xmlmet->data->METAR->sky_condition[0]['sky_cover'];
+				$skycondition1 = $xmlmet->data->METAR->sky_condition[0]['cloud_base_ft_agl'];
+				$skycondition3 = $xmlmet->data->METAR->sky_condition[1]['sky_cover'];
+				$skycondition4 = $xmlmet->data->METAR->sky_condition[1]['cloud_base_ft_agl'];
+				
 				
 				//Station Info
 				$urlinf = 'https://www.aviationweather.gov/adds/dataserver_current/httpparam?dataSource=stations&requestType=retrieve&format=xml&stationString='.$icao;
@@ -42,6 +47,10 @@ class WTHR extends CodonModule
 				$this->set('visibility', $visibility);
 				$this->set('winddir', $winddir);
 				$this->set('windspd', $windspd);
+				$this->set('skycondition0', $skycondition0);
+				$this->set('skycondition1', $skycondition1);
+				$this->set('skycondition3', $skycondition3);
+				$this->set('skycondition4', $skycondition4);
 				
 				//Variables For Info
 				$this->set('lat', $lat);
