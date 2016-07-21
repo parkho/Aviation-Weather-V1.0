@@ -35,8 +35,7 @@
 					<td><img src="<?php echo fileurl('lib/images/visible.png') ;?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Visibility <?php echo $visibility.$sky1;?> Miles</td>
 				</tr>
 				<tr>
-					<td><img src="<?php echo fileurl('lib/images/compass.png') ;?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wind Direction From <?php echo $winddir;?> &deg;</td>
-					<td><img src="<?php echo fileurl('lib/images/wind.png') ;?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wind Speed <?php echo $windspd;?> kt</td>
+					<td><img src="<?php echo fileurl('lib/images/compass.png') ;?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wind Direction From <?php echo $winddir;?> &deg;<img src="<?php echo fileurl('lib/images/compass.png') ;?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wind Direction From <?php echo $winddir;?> &deg; At Speed Of <?php echo $windspd;?> kt</td>
 				</tr>
 				<tr>
 					<td colspan="2">
