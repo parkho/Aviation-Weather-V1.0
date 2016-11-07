@@ -60,7 +60,16 @@ class WTHR extends CodonModule
 				$this->set('stationname', $stationname);
 				$this->set('stationcountry', $stationcountry);
 				
+				//Charts Section
+				$url = 'http://api.aircharts.org/Airport/'.$icao.'.xml';
+				$xml = simplexml_load_file($url);
+				$charts = $xml->airport;
+				$count = $xml->airport->chart;
+				$this->set('charts', $charts);
+				$this->set('count', $count);
 				$this->render('weather/weather.php');
+				
 			}
+		
 	}
 ?>
