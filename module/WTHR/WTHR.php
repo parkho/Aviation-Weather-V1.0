@@ -14,13 +14,20 @@ class WTHR extends CodonModule
 					$this->show('weather/weather.php');
 				}
 			}
+		public function simplexml_load_file_curl($urlmet) 
+				{
+					$ch = curl_init($urlmet);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+					$xml = simplexml_load_string(curl_exec($ch));
+					return $xml;
+				}
 	
 		public function metar()
 			{
 				//METAR Info
 				$icao = DB::escape($_POST['icao']);
 				$urlmet = 'https://www.aviationweather.gov/adds/dataserver_current/httpparam?dataSource=metars&requestType=retrieve&format=xml&stationString='.$icao.'&hoursBeforeNow=1';
-				$xmlmet = simplexml_load_file($urlmet); 
+				$xmlmet = $this->simplexml_load_file_curl($urlmet); 
 				$metar = $xmlmet->data->METAR->raw_text;
 				$altimeter = $xmlmet->data->METAR->altim_in_hg;
 				$dewpoint = $xmlmet->data->METAR->dewpoint_c;
@@ -38,7 +45,7 @@ class WTHR extends CodonModule
 				
 				//Station Info
 				$urlinf = 'https://www.aviationweather.gov/adds/dataserver_current/httpparam?dataSource=stations&requestType=retrieve&format=xml&stationString='.$icao;
-				$xmlinf = simplexml_load_file($urlinf);
+				$xmlmet = $this->simplexml_load_file_curl($urlmet);
 				$stationid = $xmlinf->data->Station->station_id;
 				$lat = $xmlinf->data->Station->latitude;
 				$lng = $xmlinf->data->Station->longitude;
@@ -68,12 +75,7 @@ class WTHR extends CodonModule
 				$this->set('stationid', $stationid);
 				$this->set('stationname', $stationname);
 				$this->set('stationcountry', $stationcountry);
-				
-				//Charts Section
-				$url = 'http://api.aircharts.org/Airport/'.$icao.'.xml';
-				$xml = simplexml_load_file($url);
-				$charts = $xml->airport;
-				$count = $xml->airport->chart;
+								
 				$this->set('charts', $charts);
 				$this->set('count', $count);
 				$this->render('weather/weather.php');
